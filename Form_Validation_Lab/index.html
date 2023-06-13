@@ -2,11 +2,11 @@
 <html>
   <head>
     <title>Form Validation Practice</title>
+    <link rel="stylesheet" href="styles.css" />
     <!-- Font Awesome for Icons -->
     <script
       src="https://kit.fontawesome.com/d8f052c6cf.js"
       crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <!-- Container for entire form. -->
@@ -18,10 +18,22 @@
 
         <!-- Registration Form -->
         <form id="registration">
-          <input name="username" type="text" placeholder="Username" />
+          <input
+            id="username"
+            name="username"
+            type="text"
+            placeholder="Username"
+            minlength="4"
+            required
+            oninput="validateUsername()" />
           <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
 
-          <input name="email" type="text" placeholder="Email" />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            oninput="validateEmail()" />
           <span class="input-icon"><i class="fa-solid fa-envelope"></i></span
           ><br />
 
@@ -72,7 +84,7 @@
     </div>
 
     <!-- Error Display Container -->
-    <div id="errorDisplay"></div>
+    <div id="errorDisplay"><h1>HELLO</h1></div>
     <script src="app.js"></script>
   </body>
 </html>

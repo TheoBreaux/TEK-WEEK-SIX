@@ -9,20 +9,33 @@ const termsCheckbox = document.getElementById("termsCheckbox");
 const errorID = document.getElementById("errorDisplay");
 const successDisplay = document.getElementById("successDisplay");
 
+const storedUsernames = JSON.parse(localStorage.getItem("users")) || [];
+
 function validateUsername() {
   const username = usernameInput.value;
   const usernameRegex = /^(?!.*([^\s])\1)[a-zA-Z0-9]{4,}$/;
+  let errorMessage = "";
 
   if (username === "") {
-    errorID.style.display = "block";
-    errorID.innerText = "Username cannot be blank.";
+    errorMessage = "Username cannot be blank.";
   } else if (username.length < 4) {
-    errorID.style.display = "block";
-    errorID.innerText = "Username must be at least four characters long.";
+    errorMessage = "Username must be at least four characters long.";
   } else if (!usernameRegex.test(username)) {
-    errorID.style.display = "block";
-    errorID.innerText =
+    errorMessage =
       "Username must contain at least two unique consecutive characters and cannot contain any special characters or whitespace.";
+  } else if (username) {
+    for (let i = 0; i < storedUsernames.length; i++) {
+      const currUser = storedUsernames[i];
+      if (currUser.username === username) {
+        errorMessage = "That username is already taken.";
+        break;
+      }
+    }
+  }
+
+  if (errorMessage !== "") {
+    errorID.style.display = "block";
+    errorID.innerText = errorMessage;
   } else {
     errorID.style.display = "none";
   }

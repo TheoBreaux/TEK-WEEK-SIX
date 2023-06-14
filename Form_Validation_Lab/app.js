@@ -142,3 +142,38 @@ registrationForm.addEventListener("submit", (event) => {
 
 // LOGIN FORM VALIDATION/SUBMISSION
 const loginForm = document.getElementById("login");
+const loginFormUsernameInput = document.getElementById("loginFormUsername");
+const loginFormPasswordInput = document.getElementById("loginFormPassword");
+const persistCheckbox = document.getElementById("persistCheckbox");
+
+// Username validation should run on submit.
+loginForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const loginFormUsername = loginFormUsernameInput.value;
+  const loginFormPassword = loginFormPasswordInput.value;
+
+  //   The username cannot be blank.
+  if (loginFormUsername === "") {
+    errorMessage = "Username cannot be blank.";
+  }
+
+  // loop through to check if username exists
+  if (loginFormUsername) {
+    for (let i = 0; i < storedUsernames.length; i++) {
+      const currUser = storedUsernames[i];
+      if (loginFormUsername.toLowerCase() === currUser.username) {
+        return;
+      } else {
+        errorMessage = "That username does not exist";
+      }
+    }
+
+    if (errorMessage !== "") {
+      errorID.style.display = "block";
+      errorID.innerText = errorMessage;
+    } else {
+      errorID.style.display = "none";
+    }
+  }
+});

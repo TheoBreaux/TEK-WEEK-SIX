@@ -1,5 +1,5 @@
 // REGISTRATION FORM VALIDATION/SUBMISSION
-const submitButton = document.getElementById("submitButton");
+const registrationForm = document.getElementById("registration");
 const usernameInput = document.getElementById("username");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
@@ -96,16 +96,19 @@ function validatePasswordMatch() {
   }
 }
 
-submitButton.addEventListener("click", (event) => {
+registrationForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  //CHECK IF TERMS HAVE BEEN ACCEPTED
   if (!termsCheckbox.checked) {
     errorID.style.display = "block";
     errorID.innerText = "You must agree to the terms of use.";
+    return;
   } else {
     errorID.style.display = "none";
   }
 
+  //SAVE NEW USER TO USERS ARRAY
   const usersString = localStorage.getItem("users");
   let users = [];
 
@@ -125,14 +128,17 @@ submitButton.addEventListener("click", (event) => {
 
   localStorage.setItem("users", updatedUsersString);
 
+  //RESET INPUT FIELDS
   username.value = "";
   email.value = "";
   password.value = "";
   passwordRepeat.value = "";
   termsCheckbox.checked = false;
 
+  //DISPLAY USER ADDED SUCCESS MESSAGE
   successDisplay.style.display = "block";
   successDisplay.innerText = "You have successfully completed your submission!";
 });
 
 // LOGIN FORM VALIDATION/SUBMISSION
+const loginForm = document.getElementById("login");

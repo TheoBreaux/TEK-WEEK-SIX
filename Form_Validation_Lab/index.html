@@ -25,7 +25,7 @@
             placeholder="Username"
             minlength="4"
             required
-            oninput="validateUsername()" />
+            onchange="validateUsername()" />
           <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
 
           <input
@@ -33,29 +33,65 @@
             name="email"
             type="email"
             placeholder="Email"
-            oninput="validateEmail()" />
+            required
+            onchange="validateEmail()" />
           <span class="input-icon"><i class="fa-solid fa-envelope"></i></span
           ><br />
 
-          <input name="password" type="text" placeholder="Password" />
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
+            minlength="12"
+            required
+            oninput="validatePassword()" />
           <span class="input-icon"><i class="fa-solid fa-key"></i></span><br />
 
           <input
+            id="passwordRepeat"
             name="passwordCheck"
-            type="text"
-            placeholder="Repeat Password" />
+            type="password"
+            placeholder="Repeat Password"
+            required
+            oninput="validatePasswordMatch()" />
           <span class="input-icon"><i class="fa-solid fa-key"></i></span
           ><br /><br />
 
           <div class="flex-row">
-            <input name="terms" type="checkbox" />
-            <label for="terms"
+            <input id="termsCheckbox" name="termsCheckbox" type="checkbox" />
+            <label for="termsCheckbox"
               >I agree to the&nbsp;<a href="#">Terms of Use</a>.</label
             >
-            <input type="submit" value="Register" />
+            <input type="submit" value="Register" id="submitButton"/>
           </div>
         </form>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <!-- Login Side -->
       <div>
@@ -84,7 +120,8 @@
     </div>
 
     <!-- Error Display Container -->
-    <div id="errorDisplay"><h1>HELLO</h1></div>
+    <div id="errorDisplay"></div>
+    <div id="successDisplay"></div>
     <script src="app.js"></script>
   </body>
 </html>

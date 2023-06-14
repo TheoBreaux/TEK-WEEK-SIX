@@ -135,3 +135,21 @@ a:hover {
   padding: 20px;
   display: none;
 }
+
+#successDisplay {
+  position: absolute;
+  background: #ffab40;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  width: 500px;
+  left: 50%;
+  top: calc(50% + 180px);
+  transform: translate(-50%, 0%);
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.25);
+  user-select: none;
+  padding: 20px;
+  display: none;
+}

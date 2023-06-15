@@ -34,7 +34,7 @@ export async function db1(id) {
   return {
     username: json.username,
     website: json.website,
-    company: json.company,
+    company: json.company
   };
 }
 /**
@@ -53,7 +53,7 @@ export async function db2(id) {
   return {
     username: json.username,
     website: json.website,
-    company: json.company,
+    company: json.company
   };
 }
 /**
@@ -72,7 +72,7 @@ export async function db3(id) {
   return {
     username: json.username,
     website: json.website,
-    company: json.company,
+    company: json.company
   };
 }
 
@@ -93,6 +93,6 @@ export async function vault(id) {
     name: json.name,
     email: json.email,
     address: json.address,
-    phone: json.phone,
+    phone: json.phone
   };
 }

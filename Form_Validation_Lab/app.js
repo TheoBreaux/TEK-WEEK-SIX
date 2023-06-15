@@ -58,8 +58,6 @@ function validateEmail() {
 function validatePassword() {
   const password = passwordInput.value;
 
-  console.log(password);
-
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_\-+={}[\]:;'"|\\<>?,./]).{12,}$/;
 
@@ -83,7 +81,6 @@ function validatePassword() {
 
 function validatePasswordMatch() {
   const passwordMatch = passwordRepeatInput.value;
-  console.log(passwordMatch);
 
   if (passwordMatch !== passwordInput.value) {
     errorID.style.display = "block";

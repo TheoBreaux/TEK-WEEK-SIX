@@ -73,7 +73,7 @@ function validatePassword() {
     errorID.style.display = "block";
     errorID.innerText =
       "Passwords must have at least one uppercase and one lowercase letter and at least one number and one special character.";
-  } else if (password.includes(usernameInput.value)) {
+  } else if (password.toLowerCase().includes(usernameInput.value)) {
     errorID.style.display = "block";
     errorID.innerText = "Passwords cannot contain the username.";
   } else {
@@ -88,7 +88,7 @@ function validatePasswordMatch() {
   if (passwordMatch !== passwordInput.value) {
     errorID.style.display = "block";
     errorID.innerText = "Both passwords must match.";
-  } else if (passwordMatch.includes(usernameInput.value)) {
+  } else if (passwordMatch.toLowerCase().includes(usernameInput.value)) {
     errorID.style.display = "block";
     errorID.innerText = "Passwords cannot contain the username.";
   } else {
@@ -138,6 +138,10 @@ registrationForm.addEventListener("submit", (event) => {
   //DISPLAY USER ADDED SUCCESS MESSAGE
   successDisplay.style.display = "block";
   successDisplay.innerText = "You have successfully completed your submission!";
+
+  setTimeout(() => {
+    successDisplay.style.display = "none";
+  }, 1000);
 });
 
 // LOGIN FORM VALIDATION/SUBMISSION
@@ -153,27 +157,40 @@ loginForm.addEventListener("submit", (event) => {
   const loginFormUsername = loginFormUsernameInput.value;
   const loginFormPassword = loginFormPasswordInput.value;
 
-  //   The username cannot be blank.
-  if (loginFormUsername === "") {
-    errorMessage = "Username cannot be blank.";
+  //   The username and password cannot be blank.
+  if (loginFormUsername === "" || loginFormPassword === "") {
+    errorID.style.display = "block";
+    errorID.innerText = "Username or password cannot be blank.";
   }
 
-  // loop through to check if username exists
+  // loop through to check if username exists and password matches
   if (loginFormUsername) {
+    // keep track if username exists and correct password
+    let usernameExists = false;
+    let correctPassword = false;
     for (let i = 0; i < storedUsernames.length; i++) {
       const currUser = storedUsernames[i];
       if (loginFormUsername.toLowerCase() === currUser.username) {
+        usernameExists = true;
+      }
+      if (loginFormPassword.toLowerCase() === currUser.password) {
+        correctPassword = true;
+        successDisplay.style.display = "block";
+        successDisplay.innerText = "You have successfully logged in!";
+        loginFormUsernameInput.value = "";
+        loginFormPasswordInput.value = "";
         return;
-      } else {
-        errorMessage = "That username does not exist";
       }
     }
-
-    if (errorMessage !== "") {
+    if (!usernameExists) {
       errorID.style.display = "block";
-      errorID.innerText = errorMessage;
-    } else {
-      errorID.style.display = "none";
+      errorID.innerText = "That username does not exist";
+    } else if (loginFormUsername && !loginFormPassword) {
+      errorID.style.display = "block";
+      errorID.innerText = "Please enter a password";
+    } else if (loginFormUsername && !correctPassword) {
+      errorID.style.display = "block";
+      errorID.innerText = "Incorrect password";
     }
   }
 });

@@ -6,7 +6,8 @@
     <!-- Font Awesome for Icons -->
     <script
       src="https://kit.fontawesome.com/d8f052c6cf.js"
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- Container for entire form. -->
@@ -25,7 +26,8 @@
             placeholder="Username"
             minlength="4"
             required
-            onchange="validateUsername()" />
+            onchange="validateUsername()"
+          />
           <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
 
           <input
@@ -34,7 +36,8 @@
             type="email"
             placeholder="Email"
             required
-            onchange="validateEmail()" />
+            onchange="validateEmail()"
+          />
           <span class="input-icon"><i class="fa-solid fa-envelope"></i></span
           ><br />
 
@@ -45,7 +48,8 @@
             placeholder="Password"
             minlength="12"
             required
-            oninput="validatePassword()" />
+            oninput="validatePassword()"
+          />
           <span class="input-icon"><i class="fa-solid fa-key"></i></span><br />
 
           <input
@@ -54,7 +58,8 @@
             type="password"
             placeholder="Repeat Password"
             required
-            oninput="validatePasswordMatch()" />
+            oninput="validatePasswordMatch()"
+          />
           <span class="input-icon"><i class="fa-solid fa-key"></i></span
           ><br /><br />
 
@@ -79,20 +84,26 @@
             id="loginFormUsername"
             name="username"
             type="text"
-            placeholder="Username" />
+            placeholder="Username"
+          />
           <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
 
           <input
             id="loginFormPassword"
             name="password"
-            type="text"
-            placeholder="Password" />
+            type="password"
+            placeholder="Password"
+          />
           <span class="input-icon"><i class="fa-solid fa-key"></i></span
           ><br /><br />
 
           <div class="flex-row">
-            <input id="persistCheckbox" name="persist" type="checkbox" />
-            <label for="persist">Keep me logged in.</label>
+            <input
+              id="persistCheckbox"
+              name="persistCheckbox"
+              type="checkbox"
+            />
+            <label for="persistCheckbox">Keep me logged in.</label>
             <input type="submit" value="Login" />
           </div>
           <br /><br />

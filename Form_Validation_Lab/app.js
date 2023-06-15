@@ -173,7 +173,21 @@ loginForm.addEventListener("submit", (event) => {
       if (loginFormUsername.toLowerCase() === currUser.username) {
         usernameExists = true;
       }
-      if (loginFormPassword.toLowerCase() === currUser.password) {
+      if (
+        loginFormPassword.toLowerCase() === currUser.password &&
+        persistCheckbox.checked
+      ) {
+        correctPassword = true;
+        successDisplay.style.display = "block";
+        successDisplay.innerText =
+          "You have successfully logged in! Welcome back! You will stay logged in even after closing the browser.";
+        loginFormUsernameInput.value = "";
+        loginFormPasswordInput.value = "";
+        // return;
+      } else if (
+        loginFormPassword.toLowerCase() === currUser.password &&
+        !persistCheckbox.checked
+      ) {
         correctPassword = true;
         successDisplay.style.display = "block";
         successDisplay.innerText = "You have successfully logged in!";
